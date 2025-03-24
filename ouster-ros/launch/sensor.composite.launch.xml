@@ -69,7 +69,7 @@
     and choose a value the range [0, sensor_beams_count)"/>
 
   <arg name="point_type" default="original" description="point type for the generated point cloud;
-   available options: {
+    available options: {
     original,
     native,
     xyz,
@@ -93,7 +93,7 @@
     description="wait time in seconds between reconnection attempts"/>
   <arg name="max_failed_reconnect_attempts" default="2147483647"
     description="maximum number of attempts trying to communicate with the sensor.
-         Counter resets upon successful connection"/>
+      Counter resets upon successful connection"/>
 
   <arg name="auto_start" default="true"
     description="automatically configure and activate the node"/>
@@ -112,7 +112,7 @@
     description="The minimum ratio of valid columns for processing the LidarScan [0, 1]"/>
 
   <arg name="v_reduction" default="1" description="vertical beam reduction;
-   available options: {1, 2, 4, 8, 16}"/>
+    available options: {1, 2, 4, 8, 16}"/>
 
   <group>
     <push-ros-namespace namespace="$(var ouster_ns)"/>
@@ -142,9 +142,9 @@
       <param name="persist_config" value="$(var persist_config)"/>
       <param name="attempt_reconnect" value="$(var attempt_reconnect)"/>
       <param name="dormant_period_between_reconnects"
-             value="$(var dormant_period_between_reconnects)"/>
+        value="$(var dormant_period_between_reconnects)"/>
       <param name="max_failed_reconnect_attempts"
-             value="$(var max_failed_reconnect_attempts)"/>
+        value="$(var max_failed_reconnect_attempts)"/>
       <param name="auto_start" value="$(var auto_start)"/>
       <param name="organized" value="$(var organized)"/>
       <param name="destagger" value="$(var destagger)"/>
@@ -152,7 +152,7 @@
       <param name="max_range" value="$(var max_range)"/>
       <param name="v_reduction" value="$(var v_reduction)"/>
       <param name="min_scan_valid_columns_ratio"
-             value="$(var min_scan_valid_columns_ratio)"/>
+        value="$(var min_scan_valid_columns_ratio)"/>
     </node>
   </group>
 

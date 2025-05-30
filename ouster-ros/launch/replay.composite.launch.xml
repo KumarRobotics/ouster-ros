@@ -5,6 +5,7 @@
   <arg name="loop" default="false" description="request loop playback"/>
   <arg name="play_delay" default="0" description="playback start delay in seconds"/>
   <arg name="play_rate" default="1.0"/>
+  <arg name="play_topics" default="" description="Space-separated list of topics to play from bag file"/>
 
   <let if="$(var loop)" name="_loop" value="--loop"/>
   <let unless="$(var loop)" name="_loop" value=" "/>
@@ -19,7 +20,7 @@
     TIME_FROM_PTP_1588,
     TIME_FROM_ROS_TIME
     }"/>
-   <arg name="ptp_utc_tai_offset" default="-37.0"
+  <arg name="ptp_utc_tai_offset" default="-37.0"
     description="UTC/TAI offset in seconds to apply when using TIME_FROM_PTP_1588"/>
   <arg name="metadata" default=""
     description="path to write metadata file when receiving sensor data"/>
@@ -58,7 +59,7 @@
     and choose a value the range [0, sensor_beams_count)"/>
 
   <arg name="point_type" default="original" description="point type for the generated point cloud;
-   available options: {
+    available options: {
     original,
     native,
     xyz,
@@ -81,7 +82,7 @@
     description="The minimum ratio of valid columns for processing the LidarScan [0, 1]"/>
 
   <arg name="v_reduction" default="1" description="vertical beam reduction;
-   available options: {1, 2, 4, 8, 16}"/>
+    available options: {1, 2, 4, 8, 16}"/>
 
   <group>
     <push-ros-namespace namespace="$(var ouster_ns)"/>
@@ -125,7 +126,8 @@
 
   <executable if="$(var _use_bag_file_name)" output="screen"
     launch-prefix="bash -c 'sleep $(var play_delay); $0 $@'"
-    cmd="ros2 bag play $(var bag_file) --clock $(var _loop)
+    cmd="ros2 bag play $(var bag_file) --clock $(var _loop) 
+      --topics $(var play_topics)
       --rate $(var play_rate)
       --remap
         /os_node/metadata:=/ouster/metadata

@@ -56,13 +56,13 @@ def generate_launch_description():
         parameters=[params_file]
     )
 
-    os_image = ComposableNode(
-        package='ouster_ros',
-        plugin='ouster_ros::OusterImage',
-        name='os_image',
-        namespace=ouster_ns,
-        parameters=[params_file]
-    )
+    # os_image = ComposableNode(
+    #     package='ouster_ros',
+    #     plugin='ouster_ros::OusterImage',
+    #     name='os_image',
+    #     namespace=ouster_ns,
+    #     parameters=[params_file]
+    # )
 
     os_container = ComposableNodeContainer(
         name='os_container',
@@ -72,7 +72,7 @@ def generate_launch_description():
         composable_node_descriptions=[
             os_sensor,
             os_cloud,
-            os_image
+            # os_image
         ],
         output='screen',
     )
